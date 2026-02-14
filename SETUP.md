@@ -171,7 +171,9 @@ openclaw
 
 OpenClaw 실행 시 TUI (Terminal UI) 화면 진입
 
-* channel 은 텔레그램만 선택 ![channel 선택](images/image.png)
+* channel 은 텔레그램만 선택
+![channel 선택](images/image.png)
+
 * skill 은 다 선택하지 말 것 
 * hatch your bot > 맥미니 서버를 이용하고 launchd 로 24시간 실행, 자동매매가 목적이므로 TUI 선택
 
