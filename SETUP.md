@@ -171,11 +171,11 @@ openclaw
 
 OpenClaw 실행 시 TUI (Terminal UI) 화면 진입
 
-* channel 은 텔레그램만 선택 ![alt text](image.png)
+* channel 은 텔레그램만 선택 ![channel 선택](images/image.png)
 * skill 은 다 선택하지 말 것 
 * hatch your bot > 맥미니 서버를 이용하고 launchd 로 24시간 실행, 자동매매가 목적이므로 TUI 선택
 
-![alt text](image-1.png)
+![tui 실행](images/image-1.png)
 ---
 
 # 8️⃣ Telegram 연결
@@ -221,7 +221,7 @@ OpenClaw 실행 후 표시되는 Pair Code를 Telegram에 입력
 ```
 Bot successfully paired
 ```
-![alt text](image-2.png)
+![연결화면](images/image-2.png)
 ---
 
 # 9️⃣ Telegram 마인드셋 주입
@@ -240,7 +240,7 @@ Bot successfully paired
 /analysis
 ```
 
-![alt text](image-3.png)
+![봇대화창](images/image-3.png)
 
 
 ---
@@ -286,7 +286,7 @@ launchctl print gui/$(id -u)/ai.openclaw.gateway | head -n 40
 plutil -p ~/Library/LaunchAgents/ai.openclaw.gateway.plist | egrep 'RunAtLoad|KeepAlive|StandardOutPath|StandardErrorPath'
 
 ```
-![alt text](image-4.png)
+![launch agent 확인](imgaes/image-4.png)
 ### 1. RunAtLoad = true
 
 → 로그인/재부팅 시 자동 실행됨
@@ -340,7 +340,7 @@ openclaw status
 /status
 ```
 
-![alt text](image-5.png)
+![모델확인](images/image-5.png)
 ---
 
 
