@@ -5,9 +5,65 @@
 
 본 프로젝트는 단순 자동매매 봇이 아닌,  
 전략 판단 → 리스크 통제 → 주문 실행 → 로그 기록 → 모니터링까지  
-하나의 실행 파이프라인으로 설계된 정량 트레이딩 시스템입니다.
+하나의 실행 파이프라인으로 설계된 정량 트레이딩 시스템입니다.매수매도 기준과 페르소나는 사용자 요구사항에 따라 확장 가능합니다. 
 
-매수매도 기준과 페르소나는 사용자의 입력에 따라 확장가능하며 아래의 관련값은 현재 테스팅 중입니다.
+
+---
+
+# 🧠 시스템 구조 및 흐름
+
+## 1️⃣ 사용자 관점
+
+> Mac mini는 서버,
+> Telegram은 원격 콘솔이다.
+
+사용자는 텔레그램에서 명령어만 입력하면 된다.
+
+```mermaid
+flowchart LR
+    User -->|/status /analysis| Telegram
+    Telegram --> OpenClaw
+    OpenClaw --> Exchange
+    OpenClaw --> Telegram
+    Telegram --> User
+```
+
+* Telegram이 인터페이스 역할
+* OpenClaw가 전략 실행
+* 거래소 API로 주문 실행
+* 결과는 다시 Telegram으로 반환
+
+---
+
+## 2️⃣ 시스템 구조 관점
+
+```mermaid
+flowchart TD
+    MacMini[Mac mini 24/7]
+    launchd --> OpenClaw
+    OpenClaw --> Strategy
+    OpenClaw --> Scheduler
+    OpenClaw --> Telegram
+    Strategy --> Exchange
+```
+
+### 구조 설명
+
+* **Mac mini** : 항상 켜져 있는 로컬 서버
+* **launchd** : 봇이 죽으면 자동 재시작
+* **OpenClaw** : 전략 실행 엔진
+* **Scheduler** : 정해진 시간마다 실행
+* **Telegram** : 원격 제어 인터페이스
+
+---
+
+## 🎯 설계 목적
+
+* 24/7 자동매매
+* 재부팅 후 자동 복구
+* 모바일 원격 제어
+* 모델 교체 가능 구조
+---
 ---
 
 # 📌 System Overview
