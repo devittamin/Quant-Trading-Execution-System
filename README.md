@@ -14,10 +14,8 @@
 
 ## 1️⃣ 사용자 관점
 
-> Mac mini는 서버,
-> Telegram은 원격 콘솔이다.
-
-사용자는 텔레그램에서 명령어만 입력하면 된다.
+본 시스템은 사용자가 직접 매매를 수행하는 구조가 아닌,  
+전략 기반 자동 실행 시스템을 **Telegram 인터페이스를 통해 통제·모니터링하는 형태**로 설계되었습니다.
 
 ```mermaid
 flowchart LR
@@ -28,11 +26,15 @@ flowchart LR
     Telegram --> User
 ```
 
-* Telegram이 인터페이스 역할
-* OpenClaw가 전략 실행
-* 거래소 API로 주문 실행
-* 결과는 다시 Telegram으로 반환
+1️⃣ Telegram에서 `/start` 명령으로 자동매매 활성화  
+2️⃣ OpenClaw 가 장중 또는 주기 실행에 따라 전략애 따라 자동 판단 [매수/매도/보류]  
+3️⃣ 체결 발생 시 실시간 알림 수신  
+4️⃣ `/positions` 명령으로 현재 포지션 확인  
+5️⃣ `/status`로 리스크 상태 및 운용 현황 점검  
+6️⃣ 일일 리포트를 통해 성과 요약 확인  
 
+사용자는 개별 종목을 수동 매매하지 않고,  
+시스템의 전략 및 리스크 가드 구조를 신뢰하고 감독하는 역할을 수행합니다.
 ---
 
 ## 2️⃣ 시스템 구조 관점
@@ -47,7 +49,14 @@ flowchart TD
     Strategy --> Exchange
 ```
 
-### 구조 설명
+시스템은 다음 6단계로 구성됩니다:
+
+1️⃣ Market Data Collection  
+2️⃣ Universe Filtering  
+3️⃣ Sennot Strategy Engine (Signal Generation)  
+4️⃣ Risk Guard & Position Sizing  
+5️⃣ Order Execution (MoltBot Adapter)  
+6️⃣ Database Logging & Telegram Reporting  
 
 * **Mac mini** : 항상 켜져 있는 로컬 서버
 * **launchd** : 봇이 죽으면 자동 재시작
@@ -63,37 +72,6 @@ flowchart TD
 * 재부팅 후 자동 복구
 * 모바일 원격 제어
 * 모델 교체 가능 구조
----
----
-
-# 📌 System Overview
-
-시스템은 다음 6단계로 구성됩니다:
-
-1️⃣ Market Data Collection  
-2️⃣ Universe Filtering  
-3️⃣ Sennot Strategy Engine (Signal Generation)  
-4️⃣ Risk Guard & Position Sizing  
-5️⃣ Order Execution (MoltBot Adapter)  
-6️⃣ Database Logging & Telegram Reporting  
-
----
-# 👤 User Perspective
-
-본 시스템은 사용자가 직접 매매를 수행하는 구조가 아닌,  
-전략 기반 자동 실행 시스템을 **Telegram 인터페이스를 통해 통제·모니터링하는 형태**로 설계되었습니다.
-
-사용자는 다음과 같은 흐름으로 시스템을 활용합니다:
-
-1️⃣ Telegram에서 `/start` 명령으로 자동매매 활성화  
-2️⃣ 장중 또는 주기 실행에 따라 전략이 자동 판단  
-3️⃣ 체결 발생 시 실시간 알림 수신  
-4️⃣ `/positions` 명령으로 현재 포지션 확인  
-5️⃣ `/status`로 리스크 상태 및 운용 현황 점검  
-6️⃣ 일일 리포트를 통해 성과 요약 확인  
-
-사용자는 개별 종목을 수동 매매하지 않고,  
-시스템의 전략 및 리스크 가드 구조를 신뢰하고 감독하는 역할을 수행합니다.
 
 ---
 
@@ -118,7 +96,7 @@ Telegram은 단순 알림 도구가 아니라
 
 ## 🔍 Operational Philosophy
 
-본 시스템은 다음과 같은 사용자 철학을 기반으로 설계되었습니다:
+본 시스템은 다음과 같은 사용자 철학을 기반으로 설계되었습니다: 
 
 - 감정 배제 (Emotionless Execution)
 - 전략 기반 자동 의사결정
