@@ -222,9 +222,42 @@ Telegram을 통해 외부에서
 
 ---
 
+
+### 📄 Setup README
+
+초기 환경 세팅은  [SETUP.md](SETUP.md) 참고하세요.
+
+해당 문서에는 다음 내용이 포함됩니다:
+
+* macOS 초기 개발 환경 세팅
+* Homebrew 및 Python 환경 구성
+* OpenClaw 설치 및 실행
+* MoltBot API 연결
+* Telegram Bot 연동
+* launchd / PM2 기반 24시간 자동 실행 설정
+* 재부팅 후 자동 복구 설정
+
+---
+
+### 📝 블로그 상세 가이드
+
+보다 자세한 설명과 실제 화면 캡처 기반 튜토리얼은 아래 블로그 글을 참고하세요:
+👉 [https://blog.naver.com/als6412/224184243143](https://blog.naver.com/als6412/224184243143)
+
+
+블로그에는 다음 내용이 포함되어 있습니다:
+
+* Mac mini를 24/7 서버처럼 운영하는 방법
+* 자동매매 환경 구축 시 주의사항
+* MoltBot 명령어 변경 이슈 및 대응 방법
+* 실제 운영 철학 및 설계 배경
+
+---
+
+
 # 🏗 Architecture Flow
 
-상세 구조는 [ARCHITECTURE.md](ARCHITECTURE.md) 참고.
+상세 구조는 [ARCHITECTURE.md](ARCHITECTURE.md) 참고하세요.
 
 Pipeline:
 
